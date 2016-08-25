@@ -9,68 +9,81 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="@color/loginBackground"
-    tools:context="com.example.gl.study1.MainActivity"
+    tools:context=".LoginActivity"
     android:weightSum="1">
 
     <TextView
         android:text="セコレポ"
         android:textStyle="bold"
-        android:textColor="@color/logoColor"
+        android:textColor="@color/textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textview"
         android:textSize="35dp"
-        android:layout_marginTop="70sp"
+        android:layout_marginTop="30sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal" />
 
     <EditText
-
-        android:layout_width="250sp"
-        android:layout_height="wrap_content"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
         android:layout_gravity="center"
         android:layout_marginTop="30sp"
         android:textColor="@color/textColor"
+        android:background="@drawable/back"
+        android:paddingLeft="10sp"
         android:hint="メール"
         android:textColorHint="@color/textColor"
-        android:text="test5@gmail.com"
+        android:inputType="textEmailAddress"
         android:id="@+id/editText1" />
 
     <EditText
-        android:layout_width="250sp"
-        android:layout_height="wrap_content"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
         android:layout_gravity="center"
         android:layout_marginTop="10sp"
+        android:paddingLeft="10sp"
         android:textColor="@color/textColor"
+        android:background="@drawable/back"
         android:textColorHint="@color/textColor"
         android:hint="パスワード"
-        android:text="111111"
         android:inputType="textPassword"
         android:id="@+id/editText2" />
 
-    <TextView
-        android:layout_width="199dp"
-        android:layout_height="150sp"
-        android:textSize="45px"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView1"
-        android:text=""
-        android:textColor="@color/textColor"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.10" />
-
     <Button
-        android:layout_width="150dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="ログイン"
         android:id="@+id/btn_login"
-        android:background="@color/buttonColor"
+        android:background="@drawable/button_login"
         android:layout_gravity="center"
         android:textColor="@color/textColor"
         android:layout_below="@+id/textView"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView"
-        android:layout_marginBottom="141dp" />
+        android:layout_marginTop="20sp" />
+    <TextView
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:text="パスワードをお忘れですか？"
+        android:paddingLeft="10sp"
+        android:id="@+id/fogot_pass"
+        android:layout_marginTop="15sp"
+        android:textColor="@color/textColor"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="登録"
+        android:id="@+id/btn_signin"
+        android:background="@drawable/button_signin"
+        android:layout_gravity="center"
+        android:textColor="@color/textColor"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_marginTop="50sp" />
 
 </LinearLayout>

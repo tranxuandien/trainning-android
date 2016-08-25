@@ -31,20 +31,20 @@ public class ListProjectAdapter extends ArrayAdapter<Project> {
         }
         Project p = getItem(position);
         if (p != null) {
-            TextView col1=(TextView)v.findViewById(R.id.tv_id);
+            TextView col1=(TextView)v.findViewById(R.id.tv_camera);
             TextView col2=(TextView)v.findViewById(R.id.tv_name);
             TextView col3=(TextView)v.findViewById(R.id.tv_progress);
-            if (col1!=null)
-            {
-                col1.setText(p.getId());
-            }
+//            if (col1!=null)
+//            {
+//                col1.setText(p.getId()+"");
+//            }
             if (col2!=null)
             {
-                col2.setText(p.getName());
+                col2.setText(p.getProject_name());
             }
             if (col3!=null)
             {
-                col3.setText(p.getProgress()+"");
+                col3.setText(p.getProgress()+" %");
             }
         }
         return v;

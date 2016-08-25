@@ -8,4 +8,8 @@
     <color name="logoColor">#FF0000</color>
     <color name="textColor">#FFFFFF</color>
     <color name="buttonColor">#084B8A</color>
+    <color name="cameraColor">#FE2E2E</color>
+    <color name="editColor">#2ea9e0</color>
+    <color name="imageColor">#3a5898</color>
+    <color name="progressColor">#9399a4</color>
 </resources>

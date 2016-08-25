@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name"></string>
+    <string name="api_url">http://192.168.1.18/housebook_v2/public/api</string>
+    <string name="validate_error">Thông tin đăng nhập hoặc mật khẩu không chính xác!</string>
+    <string name="create_user_success">Create User Success!</string>
+    <string name="create_user_fail">Error when create new User</string>
+    <string name="Empty_fields">A field is Empty!</string>
+    <string name="login_success">Login Success!</string>
 </resources>

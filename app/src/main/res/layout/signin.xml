@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/loginBackground"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/loginBackground"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/back"
+                android:hint="メール"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/back"
+                android:hint="パスワード"
+                android:inputType="textPassword"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+
+            <EditText
+                android:id="@+id/edt_password_confirm"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/back"
+                android:hint="パスワードを確認"
+                android:inputType="textPassword"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+
+            <TextView
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:text="初期設定"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/edt_company_name"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:background="@drawable/back"
+                android:hint="会社名"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+
+            <EditText
+                android:id="@+id/edt_sex"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/back"
+                android:hint="姓"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+
+            <EditText
+                android:id="@+id/edt_username"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/back"
+                android:hint="ユーザー名"
+                android:inputType="text"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+            <!--<EditText-->
+            <!--android:layout_width="300sp"-->
+            <!--android:layout_height="40sp"-->
+            <!--android:layout_marginTop="10sp"-->
+            <!--android:background="@drawable/back"-->
+            <!--android:hint="名"-->
+            <!--android:id="@+id/edt_name"-->
+            <!--android:textColorHint="@color/textColor"-->
+            <!--android:paddingLeft="10sp"-->
+            <!--android:layout_gravity="center"/>-->
+            <EditText
+                android:id="@+id/edt_phone"
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/back"
+                android:hint="電話番号"
+                android:inputType="phone"
+                android:paddingLeft="10sp"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/textColor" />
+
+            <Button
+                android:id="@+id/btn_dosignin"
+                android:layout_width="200sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/button_signin"
+                android:text="登録"
+                android:textColor="@color/textColor"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

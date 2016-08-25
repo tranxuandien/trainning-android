@@ -5,7 +5,7 @@
     android:background="@color/textColor"
     >
 <LinearLayout
-    android:layout_width="100sp"
+    android:layout_width="180sp"
     android:layout_height="100sp"
     android:id="@+id/linearLayout"
     android:orientation="vertical"
@@ -13,25 +13,88 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true">
     <TextView
-        android:layout_width="130sp"
+        android:layout_width="180sp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
         android:text="project1"
         android:id="@+id/tv_name" />
-    <TextView
-        android:layout_width="50sp"
-        android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="30%"
-        android:id="@+id/tv_progress" />
+    <LinearLayout
+        android:layout_width="180sp"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="進捗:"
+            android:id="@+id/tv_progress_label" />
+        <TextView
+            android:layout_width="40sp"
+            android:layout_height="25sp"
+            android:background="@color/progressColor"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="30%"
+            android:textColor="@color/textColor"
+            android:id="@+id/tv_progress" />
+    </LinearLayout>
 </LinearLayout>
     <TextView
-        android:layout_width="130sp"
-        android:layout_height="wrap_content"
+        android:layout_width="60sp"
+        android:layout_height="80sp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="12"
-        android:id="@+id/tv_id"
+        android:text="カメラ"
+        android:textSize="15sp"
+        android:textColor="@color/textColor"
+        android:background="@color/colorHead"
+        android:id="@+id/tv_camera"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/linearLayout"
         android:layout_toEndOf="@+id/linearLayout" />
+    <TextView
+        android:layout_width="60sp"
+        android:layout_height="80sp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="一覧面像"
+        android:textSize="15sp"
+        android:textColor="@color/textColor"
+        android:id="@+id/tv_image"
+        android:background="@color/imageColor"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_camera"
+        android:layout_toEndOf="@+id/tv_camera" />
+    <TextView
+        android:layout_width="60sp"
+        android:layout_height="80sp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="報告する"
+        android:textSize="15sp"
+        android:textColor="@color/textColor"
+        android:id="@+id/tv_delete"
+        android:background="@color/editColor"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_image"
+        android:layout_toEndOf="@+id/tv_image" />
+
+    <ImageView
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:id="@+id/imageView"
+        android:background="@mipmap/ic_linked_camera_white_24dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="185sp" />
+    <ImageView
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:id="@+id/imageView1"
+        android:background="@mipmap/ic_image_white_24dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="245sp" />
+    <ImageView
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:id="@+id/imageView2"
+        android:background="@mipmap/ic_description_white_24dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="305sp" />
 </RelativeLayout>
