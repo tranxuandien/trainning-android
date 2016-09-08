@@ -34,6 +34,7 @@
         android:background="@drawable/back"
         android:paddingLeft="10sp"
         android:hint="メール"
+        android:text="test5@gmail.com"
         android:textColorHint="@color/textColor"
         android:inputType="textEmailAddress"
         android:id="@+id/editText1" />
@@ -47,6 +48,7 @@
         android:textColor="@color/textColor"
         android:background="@drawable/back"
         android:textColorHint="@color/textColor"
+        android:text="111111"
         android:hint="パスワード"
         android:inputType="textPassword"
         android:id="@+id/editText2" />

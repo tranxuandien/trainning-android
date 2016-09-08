@@ -3,9 +3,41 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
     </style>
+        <!-- Base application theme. -->
+        <style name="AppThemeBeatChat" parent="Theme.AppCompat.Light.DarkActionBar">
+            <!-- Customize your theme here. -->
+            <item name="homeAsUpIndicator">@drawable/ic_back</item>
+            <item name="colorPrimary">@color/colorPrimaryBeatChat</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDarkBeatChat</item>
+            <item name="colorAccent">@color/colorAccentBeatChat</item>
+            <item name="actionBarStyle">@style/ActionBar</item>
+            <!--<item name="actionButtonStyle">@style/ActionButtonStyle</item>-->
+        </style>
+
+        <style name="ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+            <item name="logo">@drawable/ic_logo</item>
+            <item name="displayOptions">useLogo|showHome</item>
+            <item name="elevation">0dp</item>
+            <item name="background">@color/colorPrimaryBeatChat</item>
+        </style>
+
+        <!--<style name="ActionButtonStyle" parent="Widget.AppCompat.ActionButton">-->
+        <!--<item name="android:width">28dp</item>-->
+        <!--<item name="android:height">28dp</item>-->
+        <!--<item name="android:scaleType">fitXY</item>-->
+        <!--<item name="android:layout_margin">0dp</item>-->
+        <!--</style>-->
+        <!--<item name="displayOptions">useLogo|showHome</item>-->
+        <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">@color/colorPrimaryBeatChat</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDarkBeatChat</item>
+            <item name="colorAccent">@color/colorAccentBeatChat</item>
+            <item name="colorButtonNormal">#d19d26</item>
+        </style>
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.gl.study1;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView TV_fogot_pass;
     Button BTN_login, BTN_signin;
     SharedPreferences sharedPreferences;
-//    public static final String MyPREFERENCES="Mypreference";
+    public static final String MyPREFERENCES="Mypreference";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         TV_fogot_pass.setMovementMethod(LinkMovementMethod.getInstance());
         String text = "<a href='http://www.google.com' style=\"color:white\"> パスワードをお忘れですか？ </a>";
         TV_fogot_pass.setText(Html.fromHtml(text));
-//        sharedPreferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        sharedPreferences=getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         BTN_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void doLogin() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://192.168.1.18/housebook_v2/public/api/auth/login";
+        String url =ProjectParams.loginUrl;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -104,11 +105,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginSuccess(String token) {
-//        SharedPreferences.Editor editor= sharedPreferences.edit();
-//        editor.putString("token",token);
-//        editor.commit();
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putString("token",token);
+        editor.commit();
         Intent myIntent = new Intent(this, MainActivity.class);
-        myIntent.putExtra("token", token);
+//        myIntent.putExtra("token", token);
         startActivity(myIntent);
     }
 }

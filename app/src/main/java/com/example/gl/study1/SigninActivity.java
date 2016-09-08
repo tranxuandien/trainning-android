@@ -2,6 +2,7 @@ package com.example.gl.study1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,8 @@ public class SigninActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.register_user_title);
 
         BTN_doSignin= (Button)findViewById(R.id.btn_dosignin);
 
@@ -53,7 +56,7 @@ public class SigninActivity extends AppCompatActivity{
 
             private void doSignin() {
                 RequestQueue queue= Volley.newRequestQueue(SigninActivity.this);
-                String url="http://192.168.1.18/housebook_v2/public/api/auth/register";
+                String url=ProjectParams.SigninProjectUrl;
                 StringRequest stringRequest= new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

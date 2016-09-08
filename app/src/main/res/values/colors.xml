@@ -12,4 +12,19 @@
     <color name="editColor">#2ea9e0</color>
     <color name="imageColor">#3a5898</color>
     <color name="progressColor">#9399a4</color>
+    <color name="listItemBackground">#f1f1f1</color>
+    <color name="colorPrimaryBeatChat">#AD8220</color>
+    <color name="colorPrimaryDarkBeatChat">#FFB814</color>
+    <color name="colorGravityPopup">#64000000</color>
+    <color name="colorWhite">#fff</color>
+    <!--<color name="colorHead">#ff5137</color>-->
+    <color name="colorAccentBeatChat">#3e66b1</color>
+    <!--<color name="loginBackground">#1f252e</color>-->
+    <!--<color name="logoColor">#FF0000</color>-->
+    <!--<color name="textColor">#FFFFFF</color>-->
+    <!--<color name="buttonColor">#084B8A</color>-->
+    <!--<color name="cameraColor">#FE2E2E</color>-->
+    <!--<color name="editColor">#2ea9e0</color>-->
+    <!--<color name="imageColor">#3a5898</color>-->
+    <!--<color name="progressColor">#9399a4</color>-->
 </resources>

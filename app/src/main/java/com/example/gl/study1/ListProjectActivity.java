@@ -47,15 +47,14 @@ public class ListProjectActivity extends AppCompatActivity {
     private void getAllProject() {
         String token = "";
         //Get data lisst project from api
-//        SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedpreferences.edit();
-//        token=sharedpreferences.getString("token",null);
+        SharedPreferences sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        token=sharedpreferences.getString("token",null);
         RequestQueue queue = Volley.newRequestQueue(this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             token = extras.getString("token");
         }
-        String url = "http://192.168.1.18/housebook_v2/public/api/project/list?token=" + token;
+        String url = ProjectParams.ListProjectUrl+"?token=" + token;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
