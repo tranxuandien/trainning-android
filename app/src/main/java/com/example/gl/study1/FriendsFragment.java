@@ -79,10 +79,16 @@ public class FriendsFragment extends Fragment {
 
                 friendses.add(new Friends("Fr1", 12));
                 friendses.add(new Friends("end 1", 12));
-                friendses.add(new Friends("Frie 1", 12));
+                friendses.add(new Friends("Frie ", 12));
                 friendses.add(new Friends("iend 1", 12));
-                friendses.add(new Friends("nd 1", 12));
+                friendses.add(new Friends("nd ", 12));
+                friendses.add(new Friends("d ", 12));
+                friendses.add(new Friends("F1", 12));
+                friendses.add(new Friends("nd ", 12));
+                friendses.add(new Friends("Fre 1", 12));
+                friendses.add(new Friends("ind 1", 12));
                 friendses.add(new Friends("d 1", 12));
+                friendses.add(new Friends("1", 12));
 
 
                 for (Friends friend : friendses) {
@@ -100,8 +106,8 @@ public class FriendsFragment extends Fragment {
                 } else {
                     if (fragment.findFragmentByTag(SearchFriendListFragment.TAG) == null) {
                         SearchFriendListFragment searchFriendFrag = new SearchFriendListFragment();
-                        transaction.add(android.R.id.content, searchFriendFrag, SearchFriendListFragment.TAG).commit();
                         searchFriendFrag.updateData(friendAdd);
+                        transaction.add(R.id.layoutSearch, searchFriendFrag, SearchFriendListFragment.TAG).commit();
                     } else {
                         ((SearchFriendListFragment) fragment.findFragmentByTag(SearchFriendListFragment.TAG)).updateData(friendAdd);
                     }

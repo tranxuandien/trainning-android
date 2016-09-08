@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:orientation="vertical"
-        android:background="@color/colorPrimaryBeatChat">
-        <EditText
-            android:id="@+id/edt_search"
-            android:layout_width="300sp"
-            android:background="@drawable/search_input"
-            android:layout_gravity="center"
-            android:layout_height="40sp"
-            android:hint="Search"
-            android:paddingLeft="10sp"
-            android:layout_marginTop="5sp"/>
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50sp"-->
+        <!--android:orientation="vertical"-->
+        <!--android:background="@color/colorPrimaryBeatChat">-->
+        <!--<EditText-->
+            <!--android:id="@+id/edt_search"-->
+            <!--android:layout_width="300sp"-->
+            <!--android:background="@drawable/search_input"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_height="40sp"-->
+            <!--android:hint="Search"-->
+            <!--android:paddingLeft="10sp"-->
+            <!--android:layout_marginTop="5sp"/>-->
+    <!--</LinearLayout>-->
 
     <FrameLayout
-        android:id="@+id/layoutSearch"
+        android:id="@+id/abc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:text="Test Search Fragment"
-            android:textSize="30sp"
-            android:gravity="center"
-            />
-
+        android:layout_height="match_parent"
+        android:background="@color/textColor"
+        >
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_result"
             android:layout_width="match_parent"
-            android:layout_height="200sp">
+            android:layout_height="match_parent"
+            android:gravity="center">
         </android.support.v7.widget.RecyclerView>
     </FrameLayout>
 

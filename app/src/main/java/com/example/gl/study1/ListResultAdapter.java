@@ -39,7 +39,7 @@ public class ListResultAdapter extends RecyclerView.Adapter<ListResultAdapter.Re
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.listFriend.size();
     }
 
     public class ResultViewHolder extends RecyclerView.ViewHolder {

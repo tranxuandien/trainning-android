@@ -34,23 +34,12 @@ public class SearchFriendListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        this.data.add(new Friends("Friendq1",122));
-        this.data.add(new Friends("Friendq1",122));
-        this.data.add(new Friends("Friendq1",122));
-        this.data.add(new Friends("Friendq1",122));
-        this.data.add(new Friends("Friendq1",122));
-//        Toast.makeText(view.getContext(),this.data.size()+"",Toast.LENGTH_LONG).show();
         listResultAdapter = new ListResultAdapter(getContext(), data);
         list.setAdapter(listResultAdapter);
     }
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        listResultAdapter.setData(data);
-//    }
-
     public void updateData(List<Friends> friendAdd) {
-        this.data=friendAdd;
+        this.data.addAll(friendAdd);
     }
+
 }

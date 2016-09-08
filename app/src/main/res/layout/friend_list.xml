@@ -31,39 +31,45 @@
             android:hint="Search"
             android:paddingLeft="10sp"/>
     </LinearLayout>
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/layoutSearch"
         android:layout_width="match_parent"
-        android:layout_height="100sp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="350sp"
-            android:layout_height="30sp"
-            android:textSize="17sp"
-            android:layout_gravity="right"
-            android:text="Profile"
-            android:paddingLeft="10sp"/>
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="350sp"
-            android:layout_height="50sp"
-            android:layout_gravity="right">
-            <ImageView
-                android:id="@+id/imgAvata"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/profile_default" />
+            android:layout_width="match_parent"
+            android:layout_height="100sp"
+            android:orientation="vertical">
             <TextView
-                android:layout_width="250sp"
-                android:layout_height="70sp"
-                android:id="@+id/myName"
-                android:text="My name"/>
+                android:layout_width="350sp"
+                android:layout_height="30sp"
+                android:textSize="17sp"
+                android:layout_gravity="right"
+                android:text="Profile"
+                android:paddingLeft="10sp"/>
+            <LinearLayout
+                android:layout_width="350sp"
+                android:layout_height="50sp"
+                android:layout_gravity="right">
+                <ImageView
+                    android:id="@+id/imgAvata"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/profile_default" />
+                <TextView
+                    android:layout_width="250sp"
+                    android:layout_height="70sp"
+                    android:id="@+id/myName"
+                    android:text="My name"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/friend_list"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:background="@color/listItemBackground">
-    </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/friend_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/listItemBackground"
+            android:layout_gravity="center">
+        </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
 
 </LinearLayout>

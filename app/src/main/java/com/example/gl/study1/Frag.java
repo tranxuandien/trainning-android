@@ -28,7 +28,6 @@ public class Frag extends AppCompatActivity{
         tabLayout.getTabAt(1).setText("Logs").setIcon(R.drawable.ic_tab_chat_change);
         tabLayout.getTabAt(2).setText("Contacts").setIcon(R.drawable.ic_tab_timeline_change);
         tabLayout.getTabAt(3).setText("").setIcon(R.drawable.ic_tab_profile_change);
-        tabLayout.getTabAt(4).setText("Search").setIcon(R.drawable.ic_tab_profile_change);
     }
 
     private void setViewPage(ViewPager viewPager) {
@@ -37,7 +36,6 @@ public class Frag extends AppCompatActivity{
         homeAdapter.addFragment(new LogFragment());
         homeAdapter.addFragment(new ContactFragment());
         homeAdapter.addFragment(new ProfileFragment());
-        homeAdapter.addFragment(new SearchFriendListFragment());
         viewPager.setAdapter(homeAdapter);
     }
 
