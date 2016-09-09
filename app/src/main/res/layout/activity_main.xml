@@ -34,7 +34,7 @@
         android:background="@drawable/back"
         android:paddingLeft="10sp"
         android:hint="メール"
-        android:text="test5@gmail.com"
+        android:text="hust.dientran@gmail.com"
         android:textColorHint="@color/textColor"
         android:inputType="textEmailAddress"
         android:id="@+id/editText1" />

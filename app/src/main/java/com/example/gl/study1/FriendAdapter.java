@@ -1,8 +1,10 @@
 package com.example.gl.study1;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +12,34 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.gl.study1.Model.FriendFragmentElement;
+import com.example.gl.study1.Model.Friends;
+import com.google.gson.JsonObject;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder> {
 
     private List<FriendFragmentElement> friendFragmentElements;
+    private List<Friends> friendArray = new ArrayList<>();
     private Context context;
     private FriendsFragment.OnRowClickListener onClick;
 
@@ -61,7 +83,45 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         holder.recyclerView.setHasFixedSize(true);
         // case Friend List or Favorite Friend List
         if (element.getName().equals("Friends")) {
-            FriendsListAdapter friendsListAdapter = new FriendsListAdapter(context, friendFragmentElements);
+            RequestQueue queue = Volley.newRequestQueue(context);
+            String url = ProjectParams.getFriendUrl;
+//            Get access token from login
+            SharedPreferences sharedpreferences = context.getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+            final String access_token = "Bearer " + sharedpreferences.getString("access_token", null);
+//            Create request to get all friend of user
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                @Override
+                public void onResponse(JSONObject response) {
+                    JSONArray jsonArray = response.optJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        try {
+                            JSONObject jsonObjecFriends = jsonArray.getJSONObject(i);
+                            JSONObject friend = jsonObjecFriends.getJSONObject("profile").optJSONObject("data");
+                            String ten = friend.getString("display_name");
+                            Integer id = friend.getInt("id");
+                            friendArray.add(new Friends(ten, id));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> header = new HashMap<>();
+                    header.put("Authorization", access_token);
+                    return header;
+                }
+            };
+            queue.add(jsonObjectRequest);
+
+            FriendsListAdapter friendsListAdapter = new FriendsListAdapter(context, friendArray);
             holder.recyclerView.setAdapter(friendsListAdapter);
             friendsListAdapter.notifyDataSetChanged();
         } else {
@@ -116,5 +176,8 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
     public void setOnRowClick(FriendsFragment.OnRowClickListener clickRow) {
         this.onClick = clickRow;
+    }
+    public int countFriend(){
+        return this.friendArray.size();
     }
 }

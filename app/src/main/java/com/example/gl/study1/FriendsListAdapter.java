@@ -22,13 +22,9 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
     private Context context;
     private List<Friends> Listfriends=new ArrayList<>();
 
-    public FriendsListAdapter(Context context, List<FriendFragmentElement> listfriends) {
+    public FriendsListAdapter(Context context, List<Friends> listfriends) {
         this.context = context;
-        Listfriends.add(new Friends("Frie",12));
-        Listfriends.add(new Friends("Frind 1",12));
-        Listfriends.add(new Friends("Friend ",12));
-        Listfriends.add(new Friends("Frnd 1",12));
-        Listfriends.add(new Friends("nd 1",12));
+        this.Listfriends=listfriends;
     }
 
     @Override
@@ -76,4 +72,3 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
         }
     }
 }
-git add

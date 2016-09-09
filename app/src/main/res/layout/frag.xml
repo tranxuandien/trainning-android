@@ -6,7 +6,7 @@
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="450sp"
+        android:layout_height="440sp"
         android:id="@+id/viewPage">
     </android.support.v4.view.ViewPager>
 

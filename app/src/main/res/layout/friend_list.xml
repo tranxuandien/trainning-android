@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100sp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBeatChat"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:orientation="vertical"
-        android:background="@color/colorPrimaryBeatChat">
+        android:paddingBottom="10sp"
+        >
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="30sp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Friends"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textColor="@color/textColor"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:id="@+id/friend_number"
-            android:layout_height="20sp"
-            android:textSize="13sp"
             android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/friend_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="2 friends"/>
+            android:text="2 friends"
+            android:textColor="@color/textColor"
+            android:textSize="13sp" />
+
         <EditText
             android:id="@+id/edt_search"
             android:layout_width="300sp"
-            android:background="@drawable/search_input"
+            android:layout_height="30sp"
             android:layout_gravity="center"
-            android:layout_height="40sp"
+            android:background="@drawable/search_input"
             android:hint="Search"
-            android:paddingLeft="10sp"/>
+            android:paddingLeft="10sp" />
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/layoutSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100sp"
             android:orientation="vertical">
+
             <TextView
-                android:layout_width="350sp"
+                android:layout_width="250sp"
                 android:layout_height="30sp"
-                android:textSize="17sp"
-                android:layout_gravity="right"
+                android:layout_gravity="center"
+                android:paddingLeft="10sp"
                 android:text="Profile"
-                android:paddingLeft="10sp"/>
+                android:textSize="17sp" />
+
             <LinearLayout
-                android:layout_width="350sp"
+                android:layout_width="300sp"
                 android:layout_height="50sp"
                 android:layout_gravity="right">
+
                 <ImageView
                     android:id="@+id/imgAvata"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/profile_default" />
+
                 <TextView
-                    android:layout_width="250sp"
-                    android:layout_height="70sp"
                     android:id="@+id/myName"
-                    android:text="My name"/>
+                    android:layout_width="200sp"
+                    android:layout_height="70sp"
+                    android:text="My name" />
             </LinearLayout>
         </LinearLayout>
 
@@ -67,9 +83,8 @@
             android:id="@+id/friend_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/listItemBackground"
-            android:layout_gravity="center">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_gravity="center"
+            android:background="@color/listItemBackground"></android.support.v7.widget.RecyclerView>
     </FrameLayout>
 
 </LinearLayout>

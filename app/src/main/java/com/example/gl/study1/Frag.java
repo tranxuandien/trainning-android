@@ -24,10 +24,10 @@ public class Frag extends AppCompatActivity{
     }
 
     private void setTextTab(TabLayout tabLayout) {
-        tabLayout.getTabAt(0).setText("Friends").setIcon(R.drawable.ic_tab_friendslist_change);
-        tabLayout.getTabAt(1).setText("Logs").setIcon(R.drawable.ic_tab_chat_change);
-        tabLayout.getTabAt(2).setText("Contacts").setIcon(R.drawable.ic_tab_timeline_change);
-        tabLayout.getTabAt(3).setText("").setIcon(R.drawable.ic_tab_profile_change);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_friendslist_change);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_chat_change);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_tab_timeline_change);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_tab_profile_change).setContentDescription("this is description");
     }
 
     private void setViewPage(ViewPager viewPager) {

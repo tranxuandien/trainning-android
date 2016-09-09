@@ -6,4 +6,7 @@ public class ProjectParams {
     public static final String loginUrl= rootUrl + "/auth/login";
     public static final String ListProjectUrl= rootUrl+"/project/list";
     public static final String SigninProjectUrl= rootUrl+"/auth/register";
+    public static final String rootBeatChatUrl="http://222.252.25.162/beatchat/public/api";
+    public static final String getFriendUrl=rootBeatChatUrl+"/friends";
+    public static final String BeatChatLoginUrl=rootBeatChatUrl+"/auth/login";
 }

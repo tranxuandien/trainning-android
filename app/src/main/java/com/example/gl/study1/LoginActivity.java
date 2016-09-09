@@ -73,13 +73,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void doLogin() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url =ProjectParams.loginUrl;
+        String url =ProjectParams.BeatChatLoginUrl;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject json = (JSONObject) new JSONTokener(response).nextValue();
-                    String token = json.getString("token");
+                    String token = json.getString("access_token");
                     loginSuccess(token);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -95,8 +95,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("email", ET_username.getText().toString());
+                params.put("username", ET_username.getText().toString());
                 params.put("password", ET_password.getText().toString());
+                params.put("grant_type", "password");
+                params.put("client_id", "40826416009628295844970703114480");
+                params.put("client_secret", "DcJB4ok4inz0oninX6RE6M6Np8nhXnu4");
+
                 return params;
             }
         };
@@ -106,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginSuccess(String token) {
         SharedPreferences.Editor editor= sharedPreferences.edit();
-        editor.putString("token",token);
+        editor.putString("access_token",token);
         editor.commit();
         Intent myIntent = new Intent(this, MainActivity.class);
 //        myIntent.putExtra("token", token);

@@ -126,7 +126,7 @@ public class FriendsFragment extends Fragment {
         recyclerView.setAdapter(fa);
         fa.notifyDataSetChanged();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        friendCountText.setText(fa.getItemCount() + " friends");
+        friendCountText.setText(fa.countFriend() + " friends");
         return view;
     }
 
