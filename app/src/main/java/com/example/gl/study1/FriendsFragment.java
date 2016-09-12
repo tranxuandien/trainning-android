@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 
 public class FriendsFragment extends Fragment {
     private FriendAdapter fa;
@@ -76,20 +79,9 @@ public class FriendsFragment extends Fragment {
                 List<Friends> friendAdd = new ArrayList<Friends>();
 
                 List<Friends> friendses = new ArrayList<Friends>();
-
-                friendses.add(new Friends("Fr1", 12));
-                friendses.add(new Friends("end 1", 12));
-                friendses.add(new Friends("Frie ", 12));
-                friendses.add(new Friends("iend 1", 12));
-                friendses.add(new Friends("nd ", 12));
-                friendses.add(new Friends("d ", 12));
-                friendses.add(new Friends("F1", 12));
-                friendses.add(new Friends("nd ", 12));
-                friendses.add(new Friends("Fre 1", 12));
-                friendses.add(new Friends("ind 1", 12));
-                friendses.add(new Friends("d 1", 12));
-                friendses.add(new Friends("1", 12));
-
+                Realm realm=Realm.getInstance(new RealmConfiguration.Builder(view.getContext()).deleteRealmIfMigrationNeeded().build());
+                List<Friends> friendArray= realm.where(Friends.class).findAll();
+                friendses.addAll(friendArray);
 
                 for (Friends friend : friendses) {
                     if (friend.getName().toLowerCase().contains(editable.toString().toLowerCase())) {
@@ -126,7 +118,10 @@ public class FriendsFragment extends Fragment {
         recyclerView.setAdapter(fa);
         fa.notifyDataSetChanged();
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        friendCountText.setText(fa.countFriend() + " friends");
+//        Get count friend of user
+        Realm realm=Realm.getInstance(new RealmConfiguration.Builder(view.getContext()).deleteRealmIfMigrationNeeded().build());
+        List<Friends> friendArray= realm.where(Friends.class).findAll();
+        friendCountText.setText( friendArray.size()+" friends");
         return view;
     }
 

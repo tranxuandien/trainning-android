@@ -36,10 +36,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
+
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder> {
 
     private List<FriendFragmentElement> friendFragmentElements;
     private List<Friends> friendArray = new ArrayList<>();
+    private List<Friends> FavoriteFriendArray = new ArrayList<>();
     private Context context;
     private FriendsFragment.OnRowClickListener onClick;
 
@@ -98,9 +103,37 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
                         try {
                             JSONObject jsonObjecFriends = jsonArray.getJSONObject(i);
                             JSONObject friend = jsonObjecFriends.getJSONObject("profile").optJSONObject("data");
+                            Integer friendId= friend.getInt("id");
                             String ten = friend.getString("display_name");
-                            Integer id = friend.getInt("id");
-                            friendArray.add(new Friends(ten, id));
+                            Integer id = friend.getInt("user_id");
+                            // add this friend to DB
+                            Realm realm=Realm.getInstance(new RealmConfiguration.Builder(context).deleteRealmIfMigrationNeeded().build());
+//                          realm.delete(Friends.class);
+                            Friends travelFriend= realm.where(Friends.class).equalTo("friendId",friendId).findFirst();
+                            if (travelFriend==null)
+                            {
+//                              add new friend to DB
+                                realm.beginTransaction();
+
+                                Friends addFriend=realm.createObject(Friends.class);
+                                addFriend.setName(ten);
+                                addFriend.setFriendId(friendId);
+                                addFriend.setAge(id);
+//                                if (friend.getString())
+//                                addFriend.setFavorite(0);
+//                                else
+//                                addFriend.setFavorite(1);
+                                realm.commitTransaction();
+                            }
+//                            if this friend is favorite friend type add to FavoriteFriendArray alse add friendArray
+//                            if(friend.)
+//                            {
+//
+//                            }
+//                            else
+//                            {
+                                friendArray.add(new Friends(ten, id));
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -161,7 +194,9 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
             }
         });
         if (element.getName().equals("Friends")) {
-            textViewName.setText(element.getName() + "(" + friendFragmentElements.size() + ")");
+            Realm realm=Realm.getInstance(new RealmConfiguration.Builder(context).deleteRealmIfMigrationNeeded().build());
+            List<Friends> friendArray= realm.where(Friends.class).findAll();
+            textViewName.setText(element.getName() + "(" + friendArray.size() + ")");
         } else {
             textViewName.setText(element.getName());
         }
