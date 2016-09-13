@@ -44,25 +44,24 @@ public class FriendsFragment extends Fragment {
         final List<Friends> friends = new ArrayList<>();
         final View view = inflater.inflate(R.layout.friend_list, container, false);
         final EditText editSearch = (EditText) view.findViewById(R.id.edt_search);
-        final TextView txtv_myName = (TextView) view.findViewById(R.id.myName);
-        ImageView img_Avatar = (ImageView) view.findViewById(R.id.imgAvata);
-        img_Avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LayoutInflater layoutInflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View layout = layoutInflater.inflate(R.layout.popup_profile, null);
-                final PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
-
-                ImageView imgv_Close = (ImageView) layout.findViewById(R.id.btn_cancel);
-                imgv_Close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        popupWindow.dismiss();
-                    }
-                });
-            }
-        });
+//        ImageView img_Avatar = (ImageView) view.findViewById(R.id.imgAvata);
+//        img_Avatar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                LayoutInflater layoutInflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                View layout = layoutInflater.inflate(R.layout.popup_profile, null);
+//                final PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//                popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//
+//                ImageView imgv_Close = (ImageView) layout.findViewById(R.id.btn_cancel);
+//                imgv_Close.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        popupWindow.dismiss();
+//                    }
+//                });
+//            }
+//        });
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -110,6 +109,7 @@ public class FriendsFragment extends Fragment {
         //view count number friends of user
         TextView friendCountText = (TextView) view.findViewById(R.id.friend_number);
 
+        friendFragmentElements.add(new FriendFragmentElement("Profile", true));
         friendFragmentElements.add(new FriendFragmentElement("Recommends", true));
         friendFragmentElements.add(new FriendFragmentElement("Favorite", true));
         friendFragmentElements.add(new FriendFragmentElement("Friends", true));

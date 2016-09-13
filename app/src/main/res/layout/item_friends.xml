@@ -21,6 +21,7 @@
         <TextView
             android:id="@+id/friend_name"
             android:textStyle="bold"
+            android:textSize="17sp"
             android:text="fdfdfdfdf"
             android:layout_width="150sp"
             android:layout_height="40sp"

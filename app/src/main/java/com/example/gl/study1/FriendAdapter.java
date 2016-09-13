@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
     private List<FriendFragmentElement> friendFragmentElements;
     private List<Friends> friendArray = new ArrayList<>();
+    private List<Friends> profile = new ArrayList<>();
     private List<Friends> FavoriteFriendArray = new ArrayList<>();
     private Context context;
     private FriendsFragment.OnRowClickListener onClick;
@@ -103,36 +105,35 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
                         try {
                             JSONObject jsonObjecFriends = jsonArray.getJSONObject(i);
                             JSONObject friend = jsonObjecFriends.getJSONObject("profile").optJSONObject("data");
-                            Integer friendId= friend.getInt("id");
+                            Integer friendId = friend.getInt("id");
                             String ten = friend.getString("display_name");
                             Integer id = friend.getInt("user_id");
                             // add this friend to DB
-                            Realm realm=Realm.getInstance(new RealmConfiguration.Builder(context).deleteRealmIfMigrationNeeded().build());
-//                          realm.delete(Friends.class);
-                            Friends travelFriend= realm.where(Friends.class).equalTo("friendId",friendId).findFirst();
-                            if (travelFriend==null)
-                            {
+                            Realm realm = Realm.getInstance(new RealmConfiguration.Builder(context).deleteRealmIfMigrationNeeded().build());
+//                            realm.delete(Friends.class);
+                            Friends travelFriend = realm.where(Friends.class).equalTo("friendId", friendId).findFirst();
+                            if (travelFriend == null) {
 //                              add new friend to DB
                                 realm.beginTransaction();
 
-                                Friends addFriend=realm.createObject(Friends.class);
+                                Friends addFriend = realm.createObject(Friends.class);
                                 addFriend.setName(ten);
                                 addFriend.setFriendId(friendId);
                                 addFriend.setAge(id);
-//                                if (friend.getString())
-//                                addFriend.setFavorite(0);
+//                                if (friend.getString("friend_favorite")=="0")
+//                                addFriend.setFavorite(1);
 //                                else
 //                                addFriend.setFavorite(1);
                                 realm.commitTransaction();
                             }
 //                            if this friend is favorite friend type add to FavoriteFriendArray alse add friendArray
-//                            if(friend.)
+//                            if(travelFriend.getFavorite()==1)
 //                            {
-//
+//                                FavoriteFriendArray.add(new Friends(ten,id));
 //                            }
 //                            else
 //                            {
-                                friendArray.add(new Friends(ten, id));
+                            friendArray.add(new Friends(ten, id));
 //                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -153,12 +154,44 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
                 }
             };
             queue.add(jsonObjectRequest);
-
-            FriendsListAdapter friendsListAdapter = new FriendsListAdapter(context, friendArray);
+//            if (position==2)
+//            {
+            FriendsListAdapter friendsListAdapter = new FriendsListAdapter(context, friendArray, ProjectParams.friendItemType);
             holder.recyclerView.setAdapter(friendsListAdapter);
             friendsListAdapter.notifyDataSetChanged();
+//            }
+//            else {
+//                FriendsListAdapter friendsListAdapter = new FriendsListAdapter(context, FavoriteFriendArray);
+//                holder.recyclerView.setAdapter(friendsListAdapter);
+//                friendsListAdapter.notifyDataSetChanged();
+//            }
+            Realm realm = Realm.getInstance(new RealmConfiguration.Builder(context).deleteRealmIfMigrationNeeded().build());
+            List<Friends> friendArray = realm.where(Friends.class).findAll();
+            textViewName.setText(element.getName() + "(" + friendArray.size() + ")");
+
         } else {
+            if (element.getName().equals("Profile")) {
+                holder.expand.setVisibility(View.GONE);
+                profile.clear();
+                profile.add(new Friends("TestProfile ", 121));
+                FriendsListAdapter friendsListAdapter = new FriendsListAdapter(context, profile, ProjectParams.profileItemType);
+                holder.recyclerView.setAdapter(friendsListAdapter);
+                friendsListAdapter.notifyDataSetChanged();
+            }
+            textViewName.setText(element.getName());
         }
+
+        // Click button expand event
+        if (element.isExpandable()) {
+            holder.recyclerView.setVisibility(View.VISIBLE);
+            holder.expand.setActivated(false);
+            element.setExpandable(true);
+        } else {
+            holder.recyclerView.setVisibility(View.GONE);
+            holder.expand.setActivated(true);
+            element.setExpandable(false);
+        }
+
         holder.expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,35 +206,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
                 }
             }
         });
-        if (element.isExpandable()) {
-            holder.recyclerView.setVisibility(View.GONE);
-            holder.expand.setActivated(false);
-            element.setExpandable(true);
-        } else {
-            holder.recyclerView.setVisibility(View.VISIBLE);
-            holder.expand.setActivated(true);
-            element.setExpandable(false);
-        }
-        holder.txtv1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                holder.txtv1.setText(element.getName() + "(" + friendFragmentElements.size() + ")");
-//                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                View layout = inflater.inflate(R.layout.popup_profile, null);
-//                final PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//                popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            }
-        });
-        if (element.getName().equals("Friends")) {
-            Realm realm=Realm.getInstance(new RealmConfiguration.Builder(context).deleteRealmIfMigrationNeeded().build());
-            List<Friends> friendArray= realm.where(Friends.class).findAll();
-            textViewName.setText(element.getName() + "(" + friendArray.size() + ")");
-        } else {
-            textViewName.setText(element.getName());
-        }
-//        textViewAge.setText(friends.getAge() + "(age)");
-
     }
 
     @Override
@@ -212,7 +216,8 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     public void setOnRowClick(FriendsFragment.OnRowClickListener clickRow) {
         this.onClick = clickRow;
     }
-    public int countFriend(){
+
+    public int countFriend() {
         return this.friendArray.size();
     }
 }
